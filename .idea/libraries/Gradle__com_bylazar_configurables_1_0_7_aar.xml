@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.bylazar:configurables:1.0.7@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/9.1.0/transforms/6adfe6bb706c64e66fb8677fa2c1d82c/transformed/configurables-1.0.7/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/9.1.0/transforms/6adfe6bb706c64e66fb8677fa2c1d82c/transformed/configurables-1.0.7/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bylazar/configurables/1.0.7/80ebe76ad2ed64bb852aad1505b3f0cc0af5c968/configurables-1.0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

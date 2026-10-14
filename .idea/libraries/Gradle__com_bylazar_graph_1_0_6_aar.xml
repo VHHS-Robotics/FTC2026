@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.bylazar:graph:1.0.6@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/9.1.0/transforms/710fadb61507a85794d58cea15a3e203/transformed/graph-1.0.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/9.1.0/transforms/710fadb61507a85794d58cea15a3e203/transformed/graph-1.0.6/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bylazar/graph/1.0.6/a9e4ddbd9a3c8d1757a093278c9e3b8f89c940f3/graph-1.0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

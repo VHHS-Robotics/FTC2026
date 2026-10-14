@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.bylazar:lights:1.0.5@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/9.1.0/transforms/23c7d2bd3f71dd98956ed5ccc947f756/transformed/lights-1.0.5/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/9.1.0/transforms/23c7d2bd3f71dd98956ed5ccc947f756/transformed/lights-1.0.5/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bylazar/lights/1.0.5/44be9c6eb467fd78d5b7fbcca9814a5bb037dec5/lights-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

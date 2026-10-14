@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.bylazar:limelightproxy:1.0.6@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/9.1.0/transforms/47cee9ea0cca1bd2b8e8562fa910cf69/transformed/limelightproxy-1.0.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/9.1.0/transforms/47cee9ea0cca1bd2b8e8562fa910cf69/transformed/limelightproxy-1.0.6/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bylazar/limelightproxy/1.0.6/53849b7b0121e619f437f5522388b387906bc213/limelightproxy-1.0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

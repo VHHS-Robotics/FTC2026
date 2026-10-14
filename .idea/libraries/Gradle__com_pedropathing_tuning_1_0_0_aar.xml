@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.pedropathing:tuning:1.0.0@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/9.1.0/transforms/b378acde69d0e87ca6b13b78b7684c8e/transformed/tuning-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/9.1.0/transforms/b378acde69d0e87ca6b13b78b7684c8e/transformed/tuning-1.0.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pedropathing/tuning/1.0.0/c4cc80cd51e50a104d16ba8492580ac9a71f889c/tuning-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

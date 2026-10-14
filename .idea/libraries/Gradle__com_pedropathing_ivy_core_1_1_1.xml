@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.pedropathing.ivy:core:1.1.1" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.pedropathing.ivy" artifactId="core" version="1.1.1" baseVersion="1.1.1" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pedropathing.ivy/core/1.1.1/534d08a987f658461892f6ceffe35fc64c5ba2bb/core-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

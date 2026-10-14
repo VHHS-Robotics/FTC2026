@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: org.firstinspires.ftc:Vision:12.0.0@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/9.1.0/transforms/54410dcfc4c12cc2b2b601b70bd2d4e6/transformed/Vision-12.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/9.1.0/transforms/54410dcfc4c12cc2b2b601b70bd2d4e6/transformed/Vision-12.0.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/Vision/12.0.0/3b50b2a5fb2e1549e2d2f2877b88fb7dfdd69be2/Vision-12.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/Vision/12.0.0/682b8c8c70d53c8dc16741ce63ea495fc774ba26/Vision-12.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
