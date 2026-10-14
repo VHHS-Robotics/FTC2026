@@ -8,8 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 
-@Autonomous(name="Robot: Auto Drive By Encoder", group="Robot")
-@Disabled
+@Autonomous(name = "Robot: Auto Drive By Encoder", group = "Robot")
 public class AutoTest extends LinearOpMode {
 
     @Override
