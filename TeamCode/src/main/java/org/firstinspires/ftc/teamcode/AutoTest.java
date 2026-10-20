@@ -23,6 +23,7 @@ public class AutoTest extends LinearOpMode {
 
     private Follower follower;
 
+
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose start = poseFactory.of(56, 8, 90);
