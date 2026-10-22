@@ -1,3 +1,4 @@
+//Imports & the like.
 package org.firstinspires.ftc.teamcode;
 
 import com.pedropathing.api.Paths;
@@ -14,14 +15,14 @@ import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
-
+// Starts the thing.
 @Autonomous(name = "P3_G", group = "Autonomous")
 public class P3_G extends LinearOpMode {
 
     private Follower follower;
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
-
+//The paths.
     private final Pose start = poseFactory.of(56, 8, 90);
     private final Pose path1 = poseFactory.of(55.4021, 26.2345, 90);
     private final Pose point2 = poseFactory.of(35.4746, 48.0676, 90);
@@ -38,7 +39,7 @@ public class P3_G extends LinearOpMode {
     private final Pose point11 = poseFactory.of(56.7174, 106.5186, -90);
     private final Pose point12 = poseFactory.of(6.4814, 106.0956, -90);
 
-    // Autonomous routine
+
     public Command autoRoutine() {
         return sequential(
                 follow(follower, path1()),
@@ -55,7 +56,7 @@ public class P3_G extends LinearOpMode {
                 follow(follower, path12())
         );
     }
-
+//More path stuff.
     @Override
     public void runOpMode() {
         Scheduler.reset();
@@ -82,7 +83,7 @@ public class P3_G extends LinearOpMode {
             telemetry.update();
         }
     }
-
+    // Activates the paths.
     public Path path1() {
         return Paths.line(start, path1).linear(start, path1);
     }
@@ -131,3 +132,4 @@ public class P3_G extends LinearOpMode {
         return Paths.line(point11, point12).linear(point11, point12);
     }
 }
+//tHE eND.
