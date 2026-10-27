@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode;
-
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
@@ -7,15 +6,19 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
 import com.pedropathing.follower.Follower;
 import com.pedropathing.paths.Path;
+
+import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
 
 @Autonomous(name = "BioBuzz_30Sec_Auton", group = "Autonomous")
 public class Turret extends LinearOpMode {
-
+    private ColorSensor goblinwithred_sensor;
+    double hue;
     // Hardware Declare
     private Follower follower;
     private Limelight3A limelight;
@@ -30,6 +33,7 @@ public class Turret extends LinearOpMode {
     private final double TURRET_KP = 0.04;
     private final double DISTANCE_KP = 0.05;
     private final double DESIRED_DISTANCE_INCHES = 24.0;
+    private NormalizedRGBA colors;
 
     // Autonomous State Management
     private enum AutonState {
@@ -46,6 +50,24 @@ public class Turret extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        goblinwithred_sensor = hardwareMap.get(ColorSensor.class, "goblinwithred_sensor");
+        while (opModeIsActive()) {
+            telemetry.addData("Light Detected", ((OpticalDistanceSensor) goblinwithred_sensor).getLightDetected());
+            hue = JavaUtil.colorToHue(colors.toColor());
+
+            NormalizedRGBA colors = getNormalizedColors();
+            telemetry.update();
+            telemetry.addData("Red", "%.3f", colors.red);
+            telemetry.addData("Green", "%.3f", colors.green);
+            telemetry.addData("Blue", "%.3f", colors.blue);
+
+            //Determining HSV and alpha
+            telemetry.addData("Hue", JavaUtil.colorToHue(colors.toColor()));
+            telemetry.addData("Saturation", "%.3f", JavaUtil.colorToSaturation(colors.toColor()));
+            telemetry.addData("Value", "%.3f", JavaUtil.colorToValue(colors.toColor()));
+            telemetry.addData("Alpha", "%.3f", colors.alpha);
+            telemetry.update();
+        }
         // 1. Initialize Pedro Pathing
 //        follower = new Follower(hardwareMap);
 //        follower.setStartingPose(new Point(0, 0, Math.toRadians(0)));
@@ -169,6 +191,10 @@ public class Turret extends LinearOpMode {
 //
 //        // Emergency cutoff after 30 seconds
 //        turretMotor.setPower(0);
+    }
+
+    private NormalizedRGBA getNormalizedColors() {
+        return null;
     }
 
     /**
