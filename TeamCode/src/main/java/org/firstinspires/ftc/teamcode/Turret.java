@@ -5,6 +5,7 @@ import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
@@ -44,6 +45,7 @@ public class Turret extends LinearOpMode {
         PARK,
         DONE
     }
+
     private AutonState currentState = AutonState.DRIVE_TO_SUBMERSIBLE;
     private ElapsedTime stateTimer = new ElapsedTime();
     private ElapsedTime totalAutonTimer = new ElapsedTime();
@@ -207,6 +209,21 @@ public class Turret extends LinearOpMode {
 
         double totalAngleRadians = Math.toRadians(cameraMountAngleDegrees + targetPitchAngleDegrees);
         return (tagHeightInches - cameraHeightInches) / Math.tan(totalAngleRadians);
+
+    }
+    public double GetTheSpeedWeNeed(double x) {
+        double GRAVITY = 9.80;
+        double hiveheight = 1.35; //the height of the hive, in meters 😂
+        double delta; //the angle of the turret VERTICALLY, in degrees 😭
+        delta = Math.toRadians(67.00);
+        double numerator = GRAVITY * x;
+        double cdelta = (2 * Math.cos(delta));
+        double tdelta = Math.tan(delta);
+        double denominator = cdelta * (x * tdelta * hiveheight);
+        return (numerator/denominator);
+    }
+
+    public void setTurretMotor(){
 
     }
 }
