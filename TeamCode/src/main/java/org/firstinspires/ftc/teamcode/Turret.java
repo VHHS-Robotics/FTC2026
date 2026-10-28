@@ -216,5 +216,6 @@ public class Turret extends LinearOpMode {
 
         double totalAngleRadians = Math.toRadians(cameraMountAngleDegrees + targetPitchAngleDegrees);
         return (tagHeightInches - cameraHeightInches) / Math.tan(totalAngleRadians);
+
     }
 }
