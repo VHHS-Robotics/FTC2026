@@ -67,6 +67,15 @@ public class Turret extends LinearOpMode {
             telemetry.addData("Value", "%.3f", JavaUtil.colorToValue(colors.toColor()));
             telemetry.addData("Alpha", "%.3f", colors.alpha);
             telemetry.update();
+
+            DcMotor frontLeftDrive;
+            DcMotor frontRightDrive;
+            DcMotor backLeftDrive;
+            DcMotor backRightDrive;
+            frontLeftDrive = hardwareMap.get(DcMotor.class, "frontleft");
+            frontRightDrive = hardwareMap.get(DcMotor.class, "frontright");
+            backLeftDrive = hardwareMap.get(DcMotor.class, "backleft");
+            backRightDrive= hardwareMap.get(DcMotor.class, "backright");
         }
         // 1. Initialize Pedro Pathing
 //        follower = new Follower(hardwareMap);
