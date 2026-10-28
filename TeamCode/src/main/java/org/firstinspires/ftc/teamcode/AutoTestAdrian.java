@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode;
-
 import static com.pedropathing.api.Paths.*;
 import com.pedropathing.api.Paths;
 import com.pedropathing.api.PoseFactory;
@@ -15,7 +14,6 @@ import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 
 @Autonomous(name = "AutoTestAdrian", group = "Autonomous")
@@ -59,15 +57,6 @@ public class AutoTestAdrian extends LinearOpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(start);
         follower.update();
-        DcMotor frontLeftDrive;
-        DcMotor frontRightDrive;
-        DcMotor backLeftDrive;
-        DcMotor backRightDrive;
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "frontleft");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "frontright");
-        backLeftDrive = hardwareMap.get(DcMotor.class, "backleft");
-        backRightDrive= hardwareMap.get(DcMotor.class, "backright");
-
         waitForStart();
         schedule(autoRoutine());
 
