@@ -40,7 +40,7 @@ public class Turret extends LinearOpMode {
     //The input speed should be in idk
     public void setTurretMotor(double speed){
         //according to Issac this could work... idk tho
-        turretMotor.setPower(numerator/denominator);
+        //turretMotor.setPower(numerator/denominator);
     }
 
     private ColorSensor goblinwithred_sensor;
