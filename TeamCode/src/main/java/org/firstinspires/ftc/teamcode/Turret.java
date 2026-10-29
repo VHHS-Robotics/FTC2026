@@ -5,7 +5,7 @@ import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
+
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
@@ -115,10 +115,10 @@ public class Turret extends LinearOpMode {
             DcMotor frontRightDrive;
             DcMotor backLeftDrive;
             DcMotor backRightDrive;
-            frontLeftDrive = hardwareMap.get(DcMotor.class, "frontleft");
-            frontRightDrive = hardwareMap.get(DcMotor.class, "frontright");
-            backLeftDrive = hardwareMap.get(DcMotor.class, "backleft");
-            backRightDrive= hardwareMap.get(DcMotor.class, "backright");
+            frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left");
+            frontRightDrive = hardwareMap.get(DcMotor.class, "front_right");
+            backLeftDrive = hardwareMap.get(DcMotor.class, "back_left");
+            backRightDrive= hardwareMap.get(DcMotor.class, "back_right");
         }
         // 1. Initialize Pedro Pathing
 //        follower = new Follower(hardwareMap);
