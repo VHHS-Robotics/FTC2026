@@ -77,9 +77,9 @@ public class Turret extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        goblinwithred_sensor = hardwareMap.get(ColorSensor.class, "goblinwithred_sensor");
+        //goblinwithred_sensor = hardwareMap.get(ColorSensor.class, "goblinwithred_sensor");
         while (opModeIsActive()) {
-            telemetry.addData("Light Detected", ((OpticalDistanceSensor) goblinwithred_sensor).getLightDetected());
+            //telemetry.addData("Light Detected", ((OpticalDistanceSensor) goblinwithred_sensor).getLightDetected());
             hue = JavaUtil.colorToHue(colors.toColor());
 
             NormalizedRGBA colors = getNormalizedColors();
