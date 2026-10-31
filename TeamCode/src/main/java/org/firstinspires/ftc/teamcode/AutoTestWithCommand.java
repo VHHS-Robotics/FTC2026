@@ -9,6 +9,8 @@ import com.pedropathing.math.Pose;
 import com.pedropathing.paths.Path;
 import com.pedropathing.ivy.Command;
 import com.pedropathing.ivy.Scheduler;
+
+import static com.pedropathing.ivy.Scheduler.execute;
 import static com.pedropathing.ivy.Scheduler.schedule;
 import static com.pedropathing.ivy.commands.Commands.*;
 import static com.pedropathing.ivy.groups.Groups.sequential;
@@ -26,6 +28,8 @@ public class AutoTestWithCommand extends LinearOpMode {
     private Follower follower;
 
     DcMotor motor;
+    DcMotor flywheel = hardwareMap.get(DcMotor.class, "launcher");
+    00
     private ElapsedTime runtime = new ElapsedTime();
 
 
@@ -53,13 +57,16 @@ public class AutoTestWithCommand extends LinearOpMode {
             .setExecute(() -> {
                 // executed on execute
                 //put some motor here getting power
+                flywheel.setPower(1);
             })
             .setDone(() -> {
                 // return true to end the command
                 return runtime.seconds() >= 5; //when this timer hits 5 seconds this boolean will be true and end the command
             })
             .setEnd(endCondition -> {
+
                 // executed on end
+                flywheel.setPower(0);
                 //cut the power to that motor
             });
 
