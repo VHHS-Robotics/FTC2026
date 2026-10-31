@@ -24,9 +24,9 @@ public class AutoTestAdrian extends LinearOpMode {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(56.3986, 5.8077, 90);
-    private final Pose point1 = poseFactory.of(56.9261, 6.1197, 30.6024);
-    private final Pose path2 = poseFactory.of(56.5979, 31.2169, 90.7492);
+    private final Pose start = poseFactory.of(56.6002, 9.2176, 90);
+    private final Pose point1 = poseFactory.of(56.5904, 9.7328, 91.0926);
+    private final Pose path2 = poseFactory.of(56.5979, 31.2169, 89.9799);
     private final Pose point3 = poseFactory.of(35.0761, 39.4979, 158.9546);
     private final Pose point4 = poseFactory.of(36.2873, 122.0408, 89.1593);
     private final Pose point5 = poseFactory.of(52.3789, 106.7232, -43.5885);
