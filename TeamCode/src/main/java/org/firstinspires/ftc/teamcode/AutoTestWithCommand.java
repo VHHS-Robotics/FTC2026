@@ -29,7 +29,7 @@ public class AutoTestWithCommand extends LinearOpMode {
 
     DcMotor motor;
     DcMotor flywheel = hardwareMap.get(DcMotor.class, "launcher");
-    00
+
     private ElapsedTime runtime = new ElapsedTime();
 
 
