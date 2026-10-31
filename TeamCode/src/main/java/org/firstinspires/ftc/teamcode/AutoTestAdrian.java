@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode;
-
 import static com.pedropathing.api.Paths.*;
 import com.pedropathing.api.Paths;
 import com.pedropathing.api.PoseFactory;
@@ -15,8 +14,8 @@ import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
 import org.firstinspires.ftc.teamcode.pedro.Constants;
+import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 
 @Autonomous(name = "AutoTestAdrian", group = "Autonomous")
 public class AutoTestAdrian extends LinearOpMode {
@@ -25,17 +24,24 @@ public class AutoTestAdrian extends LinearOpMode {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(56.3986, 5.8077, 90);
-    private final Pose point1 = poseFactory.of(56.9261, 6.1197, 30.6024);
-    private final Pose path2 = poseFactory.of(56.5979, 31.2169, 90.7492);
+    private final Pose start = poseFactory.of(56.6002, 9.2176, 90);
+    private final Pose point1 = poseFactory.of(56.5904, 9.7328, 91.0926);
+    private final Pose path2 = poseFactory.of(56.5979, 31.2169, 89.9799);
+    private final Pose path2Control1 = poseFactory.of(58.5153, 23.9008, 0);
     private final Pose point3 = poseFactory.of(35.0761, 39.4979, 158.9546);
     private final Pose point4 = poseFactory.of(36.2873, 122.0408, 89.1593);
+    private final Pose point4Control1 = poseFactory.of(27.8882, 73.026, 0);
     private final Pose point5 = poseFactory.of(52.3789, 106.7232, -43.5885);
+    private final Pose point5Control1 = poseFactory.of(42.6048, 105.3812, 0);
     private final Pose point6 = poseFactory.of(52.8606, 130.0338, 88.8162);
+    private final Pose point6Control1 = poseFactory.of(72.6251, 121.5968, 0);
     private final Pose point7 = poseFactory.of(21.6683, 90.8627, -128.5306);
+    private final Pose point7Control1 = poseFactory.of(15.3147, 116.4761, 0);
     private final Pose point8 = poseFactory.of(27.543, 24.6169, -84.9323);
     private final Pose point9 = poseFactory.of(17.2359, 13.3542, -132.4632);
+    private final Pose point9Control1 = poseFactory.of(33.0456, 11.9904, 0);
     private final Pose point10 = poseFactory.of(8.8761, 107.4077, 95.0793);
+    private final Pose point10Control1 = poseFactory.of(11.3854, 53.0075, 0);
 
     // Autonomous routine
     public Command autoRoutine() {
@@ -59,15 +65,6 @@ public class AutoTestAdrian extends LinearOpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(start);
         follower.update();
-        DcMotor frontLeftDrive;
-        DcMotor frontRightDrive;
-        DcMotor backLeftDrive;
-        DcMotor backRightDrive;
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "frontleft");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "frontright");
-        backLeftDrive = hardwareMap.get(DcMotor.class, "backleft");
-        backRightDrive= hardwareMap.get(DcMotor.class, "backright");
-
         waitForStart();
         schedule(autoRoutine());
 
