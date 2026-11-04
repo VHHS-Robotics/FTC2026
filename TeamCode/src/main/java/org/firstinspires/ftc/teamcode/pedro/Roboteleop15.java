@@ -116,7 +116,7 @@ public class Roboteleop15 extends LinearOpMode {
 
             //Rollers
             if (gamepad1.leftBumperWasPressed()){
-                intake.setPower(rollerPowerPower);
+                intake.setPower(rollerPower);
             }
             if (gamepad1.leftBumperWasReleased()) {
                 intake.setPower(0);
