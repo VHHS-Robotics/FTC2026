@@ -59,8 +59,7 @@ public class Roboteleop15 extends LinearOpMode {
     private DcMotor leftDrive;
     private DcMotor rightDrive;
     private DcMotor flywheel;
-    private DcMotor intakeA;
-    private DcMotor intakeB;
+    private DcMotor intake;
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -72,14 +71,14 @@ public class Roboteleop15 extends LinearOpMode {
         leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
-        intakeA = hardwareMap.get(DcMotor.class, "in_A");
-        intakeB = hardwareMap.get(DcMotor.class, "in_B");
+        intake = hardwareMap.get(DcMotor.class, "in");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.FORWARD);
+        intake.setDirection(DcMotor.Direction.FORWARD);
         // Wait for the game to start (driver presses START)
         waitForStart();
         runtime.reset();
@@ -91,8 +90,8 @@ public class Roboteleop15 extends LinearOpMode {
             double leftPower;
             double rightPower;
             double flywheelPower;
-            boolean intakeA;
-            boolean intakeB;
+            double intakePower;
+            double rollerPower;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -104,6 +103,25 @@ public class Roboteleop15 extends LinearOpMode {
             leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
             rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
             flywheelPower = gamepad1.right_trigger;
+            intakePower = 5.0;
+            rollerPower = 5.0;
+
+            //Intake
+            if (gamepad1.rightBumperWasPressed()){
+                intake.setPower(intakePower);
+            }
+            if (gamepad1.rightBumperWasReleased()) {
+                intake.setPower(0);
+            }
+
+            //Rollers
+            if (gamepad1.leftBumperWasPressed()){
+                intake.setPower(rollerPowerPower);
+            }
+            if (gamepad1.leftBumperWasReleased()) {
+                intake.setPower(0);
+            }
+
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             // leftPower  = -gamepad1.left_stick_y ;
@@ -112,6 +130,7 @@ public class Roboteleop15 extends LinearOpMode {
             // Send calculated power to wheels
             leftDrive.setPower(leftPower);
             rightDrive.setPower(rightPower);
+            // Fly wheel
             flywheel.setPower(flywheelPower);
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
