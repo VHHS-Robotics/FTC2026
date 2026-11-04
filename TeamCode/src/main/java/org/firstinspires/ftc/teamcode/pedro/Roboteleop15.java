@@ -50,13 +50,17 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear OpMode")
+@TeleOp(name="Basic: Linear OpMode", group="TeleOp")
 @Disabled
 public class Roboteleop15 extends LinearOpMode {
 
     // Declare OpMode members.
     private final ElapsedTime runtime = new ElapsedTime();
-
+    private DcMotor leftDrive;
+    private DcMotor rightDrive;
+    private DcMotor flywheel;
+    private DcMotor intakeA;
+    private DcMotor intakeB;
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -65,9 +69,11 @@ public class Roboteleop15 extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        DcMotor leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
-        DcMotor rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        DcMotor flywheel = hardwareMap.get(DcMotor.class, "launcher");
+        leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
+        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+        flywheel = hardwareMap.get(DcMotor.class, "launcher");
+        intakeA = hardwareMap.get(DcMotor.class, "in_A");
+        intakeB = hardwareMap.get(DcMotor.class, "in_B");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -85,6 +91,8 @@ public class Roboteleop15 extends LinearOpMode {
             double leftPower;
             double rightPower;
             double flywheelPower;
+            boolean intakeA;
+            boolean intakeB;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
