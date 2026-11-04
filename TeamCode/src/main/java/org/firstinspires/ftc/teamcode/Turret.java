@@ -18,31 +18,6 @@ import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
 @Autonomous(name = "BioBuzz_30Sec_Auton", group = "Autonomous")
 public class Turret extends LinearOpMode {
-    private DcMotor TurretMotor;
-    /*
-    Basically calculate the initial velocity required to throw a ball with the turret motor
-    and have it go into the hive
-    only input required is x
-    */
-    public double GetTheSpeedWeNeed(double x) {
-        double GRAVITY = 9.80; //the gravity of EARTH specifically
-        double hiveheight = 1.35; //the height of the hive, in meters 😂
-        double delta; //the angle of the turret VERTICALLY 😭, in degrees (also remove the emojis if they cause problems)
-        delta = Math.toRadians(67.00); //PLACEHOLDER!!!!!!, replace with the angle of the turret vertically!! PLEASE!!!
-        double numerator = GRAVITY * x; //calcs the numerator
-        double cdelta = (2 * Math.cos(delta));
-        double tdelta = Math.tan(delta);
-        double denominator = cdelta * (x * tdelta * hiveheight); //calcs denom
-        turretMotor.setPower(numerator/denominator);
-        return (numerator/denominator);
-    }
-
-    //The input speed should be in idk
-    public void setTurretMotor(double speed){
-        //according to Issac this could work... idk tho
-        //turretMotor.setPower(numerator/denominator);
-    }
-
     private ColorSensor goblinwithred_sensor;
     double hue;
     // Hardware Declare
@@ -99,10 +74,10 @@ public class Turret extends LinearOpMode {
             DcMotor frontRightDrive;
             DcMotor backLeftDrive;
             DcMotor backRightDrive;
-            frontLeftDrive = hardwareMap.get(DcMotor.class, "frontleft");
-            frontRightDrive = hardwareMap.get(DcMotor.class, "frontright");
-            backLeftDrive = hardwareMap.get(DcMotor.class, "backleft");
-            backRightDrive= hardwareMap.get(DcMotor.class, "backright");
+            frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left");
+            frontRightDrive = hardwareMap.get(DcMotor.class, "front_right");
+            backLeftDrive = hardwareMap.get(DcMotor.class, "back_left");
+            backRightDrive= hardwareMap.get(DcMotor.class, "back_right");
         }
         // 1. Initialize Pedro Pathing
 //        follower = new Follower(hardwareMap);
@@ -245,5 +220,19 @@ public class Turret extends LinearOpMode {
         return (tagHeightInches - cameraHeightInches) / Math.tan(totalAngleRadians);
 
     }
+    public double GetTheSpeedWeNeed(double x) {
+        double GRAVITY = 9.80;
+        double hiveheight = 1.35; //the height of the hive, in meters 😂
+        double delta; //the angle of the turret VERTICALLY, in degrees 😭
+        delta = Math.toRadians(67.00);
+        double numerator = GRAVITY * x;
+        double cdelta = (2 * Math.cos(delta));
+        double tdelta = Math.tan(delta);
+        double denominator = cdelta * (x * tdelta * hiveheight);
+        return (numerator/denominator);
+    }
 
+    public void setTurretMotor(){
+
+    }
 }
