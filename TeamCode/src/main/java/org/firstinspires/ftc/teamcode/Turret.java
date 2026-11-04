@@ -20,20 +20,20 @@ import org.firstinspires.ftc.robotcore.external.JavaUtil;
 @Autonomous(name = "BioBuzz_30Sec_Auton", group = "Autonomous")
 public class Turret extends LinearOpMode {
     //the garyibles (😂)
-    private DcMotor turretMotor;
+    private DcMotor TurretMotor;
     private final double GRAVITY = 9.80; //the gravity of EARTH specifically
     private double hiveheight = 0.0;
-    private double turretAngleRad = 0.0;
-    private double horizontaldistancetohive = 0.0; //idk what else to call this
-    private double massOfNectar = 0.0;
-    private double massOfPollen = 0.0;
+    double turretAngleRad = 0.0;
+    double horizontaldistancetohive = 0.0; //idk what else to call this
+    double massOfNectar = 0.0;
+    double massOfPollen = 0.0;
     //el constructoro 😔
     public void initalize(HardwareMap hardwareMap){
         turretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
         turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Initialize default values
-        this.horizontaldistancetohive = 0.1; //will vari...able 😂
+        this.horizontaldistancetohive = 0.0; //will vari...able 😂
         this.hiveheight = 1.35; //the height of the hive, in meters 😂
         this.turretAngleRad = Math.toRadians(67.0);
         //the angle of the turret VERTICALLY 😭, in degrees (also remove the emojis if they cause problems)
@@ -47,12 +47,9 @@ public class Turret extends LinearOpMode {
     */
     public double GetTheSpeedWeNeed() {
         double numerator = this.GRAVITY * Math.pow(horizontaldistancetohive,2); //calcs the numerator
-        double cdelta = 2 * Math.pow(Math.cos(turretAngleRad),2);
+        double cdelta = (2 * Math.cos(turretAngleRad));
         double tdelta = Math.tan(turretAngleRad);
-        double denominator = cdelta * (horizontaldistancetohive * tdelta - this.hiveheight); //calcs denom
-        if (denominator <= 0) {
-            return 0.0;
-        }
+        double denominator = cdelta * (horizontaldistancetohive * tdelta * this.hiveheight); //calcs denom
         return Math.sqrt(numerator/denominator);
     }
     public void setTurretMotor(){
@@ -60,15 +57,14 @@ public class Turret extends LinearOpMode {
         //THIS IS PLACEHOLDER OR SOMETHING
         final double MAX_VELOCITY = 15.0; // Max velocity the turret can output in m/s, please replace with actual number sometime!!! ‼️⚠️
         double motorPower = requiredVelocity / MAX_VELOCITY;
-        motorPower = Math.max(0.0, Math.min(motorPower, 1.0)); //clip it to max of 1 and min of 0
-        turretMotor.setPower(motorPower);
+        TurretMotor.setPower(motorPower);
     }
     private ColorSensor goblinwithred_sensor;
     double hue;
     // Hardware Declare
     private Follower follower;
     private Limelight3A limelight;
-    //private DcMotor turretMotor;
+    private DcMotor turretMotor;
     private DigitalChannel lightSensor;
 
     // Configuration / Constants
