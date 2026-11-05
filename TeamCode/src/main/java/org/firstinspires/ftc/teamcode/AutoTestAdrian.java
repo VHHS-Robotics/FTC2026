@@ -26,20 +26,16 @@ public class AutoTestAdrian extends LinearOpMode {
 
     private final Pose start = poseFactory.of(56.6002, 9.2176, 90);
     private final Pose point1 = poseFactory.of(56.5904, 9.7328, 91.0926);
-    private final Pose path2 = poseFactory.of(45.5006, 35.086, 139.3233);
-    private final Pose path2Control1 = poseFactory.of(58.5153, 23.9008, 0);
-    private final Pose point3 = poseFactory.of(36.6683, 40.6151, 147.9534);
-    private final Pose point4 = poseFactory.of(39.7199, 112.1562, 73.1764);
-    private final Pose point4Control1 = poseFactory.of(27.8882, 73.026, 0);
-    private final Pose point5 = poseFactory.of(59.5737, 112.8144, 1.8987);
+    private final Pose path2 = poseFactory.of(56.1288, 32.9412, 91.1393);
+    private final Pose point3 = poseFactory.of(37.3453, 33.1731, 179.2926);
+    private final Pose point4 = poseFactory.of(34.6656, 112.6167, 91.9319);
+    private final Pose point5 = poseFactory.of(59.5737, 112.8144, 0.4548);
     private final Pose point6 = poseFactory.of(59.6893, 128.191, 89.5691);
-    private final Pose point7 = poseFactory.of(21.6683, 90.8627, -80.8553);
-    private final Pose point7Control1 = poseFactory.of(16.2132, 124.7506, 0);
+    private final Pose point7 = poseFactory.of(21.6683, 90.8627, -135.5267);
     private final Pose point8 = poseFactory.of(27.543, 24.6169, -84.9323);
     private final Pose point9 = poseFactory.of(14.4868, 11.2249, 178.4884);
     private final Pose point9Control1 = poseFactory.of(30.5185, 10.8018, 0);
-    private final Pose point10 = poseFactory.of(8.7556, 107.296, 92.7733);
-    private final Pose point10Control1 = poseFactory.of(11.3854, 53.0075, 0);
+    private final Pose point10 = poseFactory.of(8.7556, 107.296, 93.414);
 
     // Autonomous routine
     public Command autoRoutine() {
@@ -89,7 +85,7 @@ public class AutoTestAdrian extends LinearOpMode {
     }
 
     public Path path2() {
-        return Paths.curve(point1, path2Control1, path2).tangent();
+        return Paths.line(point1, path2).tangent();
     }
 
     public Path path3() {
@@ -97,7 +93,7 @@ public class AutoTestAdrian extends LinearOpMode {
     }
 
     public Path path4() {
-        return Paths.curve(point3, point4Control1, point4).tangent();
+        return Paths.line(point3, point4).tangent();
     }
 
     public Path path5() {
@@ -109,7 +105,7 @@ public class AutoTestAdrian extends LinearOpMode {
     }
 
     public Path path7() {
-        return Paths.curve(point6, point7Control1, point7).tangent();
+        return Paths.line(point6, point7).tangent();
     }
 
     public Path path8() {
@@ -121,6 +117,6 @@ public class AutoTestAdrian extends LinearOpMode {
     }
 
     public Path path10() {
-        return Paths.curve(point9, point10Control1, point10).tangent();
+        return Paths.line(point9, point10).tangent();
     }
 }
