@@ -108,9 +108,7 @@ public class P3_G extends LinearOpMode {
         return Paths.line(point6Start, point6).linear(point6Start, point6).tangent();
     }
 
-    public Path path7() {
-        return Paths.line(point6, point7).linear(point6, point7).tangent();
-    }
+    public Path path7() {return Paths.line(point6, point7).linear(point6, point7).tangent();}
 
     public Path path8() {
         return Paths.line(point7, point8).linear(point7, point8).tangent();
@@ -120,9 +118,7 @@ public class P3_G extends LinearOpMode {
         return Paths.line(point8, point9).linear(point8, point9).tangent();
     }
 
-    public Path path10() {
-        return Paths.line(point10Start, point10).linear(point10Start, point10).tangent();
-    }
+    public Path path10() {return Paths.line(point10Start, point10).linear(point10Start, point10).tangent();}
 
     public Path path11() {
         return Paths.line(point10, point11).linear(point10, point11).tangent();
