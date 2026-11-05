@@ -49,7 +49,21 @@ import com.qualcomm.robotcore.util.Range;
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
+import com.qualcomm.hardware.limelightvision.LLResult;
+import com.qualcomm.hardware.limelightvision.LLResultTypes;
+import com.qualcomm.hardware.limelightvision.Limelight3A;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
+import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcore.external.JavaUtil;
+import org.firstinspires.ftc.teamcode.Turret;
 @TeleOp(name="Basic: Linear OpMode", group="TeleOp")
 @Disabled
 public class Roboteleop15 extends LinearOpMode {
@@ -57,6 +71,7 @@ public class Roboteleop15 extends LinearOpMode {
     // Declare OpMode members.
     private final ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive;
+    private DcMotor turretMotor;
     private DcMotor rightDrive;
     private DcMotor flywheel;
     private DcMotor intake;
@@ -72,6 +87,9 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
         intake = hardwareMap.get(DcMotor.class, "in");
+        turretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
+        turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -103,8 +121,8 @@ public class Roboteleop15 extends LinearOpMode {
             leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
             rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
             flywheelPower = gamepad1.right_trigger;
-            intakePower = 5.0;
-            rollerPower = 5.0;
+            intakePower = .50;
+            rollerPower = .50;
 
             //Intake
             if (gamepad1.rightBumperWasPressed()){

@@ -11,8 +11,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.pedropathing.follower.Follower;
-import com.pedropathing.paths.Path;
 
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
@@ -20,7 +18,7 @@ import org.firstinspires.ftc.robotcore.external.JavaUtil;
 @Autonomous(name = "BioBuzz_30Sec_Auton", group = "Autonomous")
 public class Turret extends LinearOpMode {
     //the garyibles (😂)
-    private DcMotor TurretMotor;
+    private DcMotor turretMotor;
     private final double GRAVITY = 9.80; //the gravity of EARTH specifically
     private double hiveheight = 0.0;
     double turretAngleRad = 0.0;
@@ -58,12 +56,11 @@ public class Turret extends LinearOpMode {
         //THIS IS PLACEHOLDER OR SOMETHING
         final double MAX_VELOCITY = 15.0; // Max velocity the turret can output in m/s, please replace with actual number sometime!!! ‼️⚠️
         double motorPower = requiredVelocity / MAX_VELOCITY;
-        TurretMotor.setPower(motorPower);
+        turretMotor.setPower(motorPower);
     }
     private ColorSensor goblinwithred_sensor;
     double hue;
     // Hardware Declare
-    private Follower follower;
     private Limelight3A limelight;
     private DcMotor turretMotor;
     private DigitalChannel lightSensor;
