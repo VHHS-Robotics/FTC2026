@@ -32,7 +32,7 @@ public class P3_G extends LinearOpMode {
     private final Pose point5 = poseFactory.of(33.9738, 105.8308, -90);
     private final Pose point6Start = poseFactory.of(33.9738, 105.8308, 90);
     private final Pose point6 = poseFactory.of(34.3106, 13.3684, 180);
-    private final Pose point7 = poseFactory.of(11.1, 8.5834, 180);
+    private final Pose point7 = poseFactory.of(16.1, 8.5834, 180);
     private final Pose point8 = poseFactory.of(55.2202, 26.5388, 90);
     private final Pose point9 = poseFactory.of(34.8887, 48.2495, 90);
     private final Pose point10Start = poseFactory.of(34.8887, 48.2495, 180);
