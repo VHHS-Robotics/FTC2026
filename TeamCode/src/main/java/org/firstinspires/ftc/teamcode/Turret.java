@@ -51,7 +51,7 @@ public class Turret extends LinearOpMode {
         double tdelta = Math.tan(turretAngleRad);
         double denominator = cdelta * (horizontaldistancetohive * tdelta * this.hiveheight); //calcs denom
         return Math.sqrt(numerator/denominator);
-        //temp comment to update
+        //temp comment to updat
     }
     public void setTurretMotor(){
         double requiredVelocity = GetTheSpeedWeNeed();
