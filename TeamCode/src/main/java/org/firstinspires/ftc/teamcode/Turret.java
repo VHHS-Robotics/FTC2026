@@ -19,25 +19,28 @@ import org.firstinspires.ftc.robotcore.external.JavaUtil;
 public class Turret extends LinearOpMode {
     //the garyibles (😂)
     private DcMotor turretMotor;
+    private DcMotor flywheel;
     private final double GRAVITY = 9.80; //the gravity of EARTH specifically
     private double hiveheight = 0.0;
     double turretAngleRad = 0.0;
     double horizontaldistancetohive = 0.0; //idk what else to call this
-    double massOfNectar = 0.0;
-    double massOfPollen = 0.0;
+
+    //THIS IS PLACEHOLDER OR SOMETHING ⬇️
+    final double MAX_VELOCITY = 15.0; //placeholder Max velocity the turret can output in m/s, please replace with actual number sometime!!! ‼️⚠️
+
     //el constructoro 😔
     public void initalize(HardwareMap hardwareMap){
+        flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+        flywheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         turretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
         turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
         // Initialize default values
         this.horizontaldistancetohive = 0.0; //will vari...able 😂
         this.hiveheight = 1.35; //the height of the hive, in meters 😂
-        this.turretAngleRad = Math.toRadians(67.0);
-        //the angle of the turret VERTICALLY 😭, in degrees (also remove the emojis if they cause problems)
+        // the angle of the turret VERTICALLY 😭, in degrees (also remove the emojis if they cause problems)
         //PLACEHOLDER!!!!!!, replace with the angle of the turret vertically!! PLEASE!!! 🙏
-        this.massOfPollen = 0.0; //i dont know the masses of either of these 😭🙏🙏
-        this.massOfNectar = 0.0; //or if we even need it
+        this.turretAngleRad = Math.toRadians(67.0);
+
     }
     /*
     Basically calculate the initial velocity required to throw a ball with the turret motor
@@ -45,24 +48,24 @@ public class Turret extends LinearOpMode {
     */
     public double GetTheSpeedWeNeed() {
         double numerator = this.GRAVITY * Math.pow(horizontaldistancetohive,2); //calcs the numerator
-        double cdelta = (2 * Math.cos(turretAngleRad));
+        double cdelta = Math.pow(Math.cos(turretAngleRad),2);
         double tdelta = Math.tan(turretAngleRad);
-        double denominator = cdelta * (horizontaldistancetohive * tdelta * this.hiveheight); //calcs denom
+        double denominator = 2 * cdelta * (horizontaldistancetohive * tdelta - this.hiveheight);//calcs denom
         return Math.sqrt(numerator/denominator);
-        //temp comment to updat
     }
+    //Method that uses the GetTheSpeedWeNeed function to set the turret motor to the correct speed
     public void setTurretMotor(){
         double requiredVelocity = GetTheSpeedWeNeed();
-        //THIS IS PLACEHOLDER OR SOMETHING
-        final double MAX_VELOCITY = 15.0; // Max velocity the turret can output in m/s, please replace with actual number sometime!!! ‼️⚠️
-        double motorPower = requiredVelocity / MAX_VELOCITY;
-        turretMotor.setPower(motorPower);
+        double motorPower = requiredVelocity / this.MAX_VELOCITY;
+        flywheel.setPower(motorPower);
     }
+
+
     private ColorSensor goblinwithred_sensor;
     double hue;
     // Hardware Declare
     private Limelight3A limelight;
-    private DcMotor turretMotor;
+    //private DcMotor turretMotor;
     private DigitalChannel lightSensor;
 
     // Configuration / Constants

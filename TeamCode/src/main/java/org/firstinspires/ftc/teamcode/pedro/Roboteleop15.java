@@ -107,6 +107,7 @@ public class Roboteleop15 extends LinearOpMode {
             // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
+            //Turret Fire Motor thing
             double flywheelPower;
             double intakePower;
             double rollerPower;
@@ -139,7 +140,14 @@ public class Roboteleop15 extends LinearOpMode {
             if (gamepad1.leftBumperWasReleased()) {
                 intake.setPower(0);
             }
-
+            //Turret rotation
+            if (gamepad1.dpad_left){ //if left then go left ⬅️
+                turretMotor.setPower(1);
+            }else if (gamepad1.dpad_right){ //else if right go right ➡️
+                turretMotor.setPower(-1);
+            }else { //else, not left or right, do nothing and set 0 😃
+                turretMotor.setPower(0);
+            }
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             // leftPower  = -gamepad1.left_stick_y ;
