@@ -11,9 +11,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.pedropathing.follower.Follower;
+/*import com.pedropathing.follower.Follower;
 import com.pedropathing.paths.Path;
-
+*/
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
 
@@ -26,27 +26,10 @@ public class Turret extends LinearOpMode {
     double turretAngleRad = 0.0;
     double horizontaldistancetohive = 0.0; //idk what else to call this
     double massOfNectar = 0.0;
-
-    private ColorSensor goblinwithred_sensor;
-    double hue;
-    // Hardware Declare
-    private Follower follower;
-    private DcMotor turretMotor;
-    private DigitalChannel lightSensor;
-
-    // Configuration / Constants
-    private static final int PIPELINE_APRILTAG = 0; // Configured AprilTag pipeline
-    private static final int PIPELINE_POLLEN = 1;   // Sample/Pollen tracking pipeline
-
-    // Target constraints for PID calculations
-    private final double TURRET_KP = 0.04;
-    private final double DISTANCE_KP = 0.05;
-    private final double DESIRED_DISTANCE_INCHES = 24.0;
-    private NormalizedRGBA colors;
     double massOfPollen = 0.0;
-    //el constructoro 😔 erwin please stop
+    //el constructoro 😔
     public void initalize(HardwareMap hardwareMap){
-        TurretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
+        turretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
         turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Initialize default values
@@ -77,7 +60,23 @@ public class Turret extends LinearOpMode {
         double motorPower = requiredVelocity / MAX_VELOCITY;
         TurretMotor.setPower(motorPower);
     }
+    private ColorSensor goblinwithred_sensor;
+    double hue;
+    // Hardware Declare
+    //private Follower follower;
+    private Limelight3A limelight;
+    private DcMotor turretMotor;
+    private DigitalChannel lightSensor;
 
+    // Configuration / Constants
+    private static final int PIPELINE_APRILTAG = 0; // Configured AprilTag pipeline
+    private static final int PIPELINE_POLLEN = 1;   // Sample/Pollen tracking pipeline
+
+    // Target constraints for PID calculations
+    private final double TURRET_KP = 0.04;
+    private final double DISTANCE_KP = 0.05;
+    private final double DESIRED_DISTANCE_INCHES = 24.0;
+    private NormalizedRGBA colors;
 
     // Autonomous State Management
     private enum AutonState {
@@ -122,7 +121,6 @@ public class Turret extends LinearOpMode {
             backLeftDrive = hardwareMap.get(DcMotor.class, "back_left");
             backRightDrive= hardwareMap.get(DcMotor.class, "back_right");
         }
-
         // 1. Initialize Pedro Pathing
 //        follower = new Follower(hardwareMap);
 //        follower.setStartingPose(new Point(0, 0, Math.toRadians(0)));
