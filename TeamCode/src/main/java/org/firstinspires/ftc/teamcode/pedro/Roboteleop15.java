@@ -33,10 +33,17 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.hardware.limelightvision.Limelight3A;
+import com.qualcomm.hardware.limelightvision.LLResult;
+import com.qualcomm.hardware.limelightvision.LLResultTypes;
 
-
+import org.firstinspires.ftc.robotcore.external.JavaUtil;
 /*
  * This file contains a minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
  * the autonomous or the teleop period of an FTC match. The names of OpModes appear on the menu
@@ -82,32 +89,55 @@ public class Roboteleop15 extends LinearOpMode {
         // Wait for the game to start (driver presses START)
         waitForStart();
         runtime.reset();
-
+        double hue;
+        NormalizedRGBA colors = null;
+        hue = JavaUtil.colorToHue(colors.toColor());
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            NormalizedColorSensor test_color = null;
+            telemetry.addData("Light Detected", ((OpticalDistanceSensor) test_color).getLightDetected());
+            test_color = hardwareMap.get(NormalizedColorSensor.class, "test_color");
+            colors = test_color.getNormalizedColors();
 
+            if (hue < 30) {
+                telemetry.addData("Color", "Red");
+            } else if (hue < 60) {
+                telemetry.addData("Color", "Orange");
+            } else if (hue < 90) {
+                telemetry.addData("Color", "Yellow");
+            } else if (hue < 150) {
+                telemetry.addData("Color", "Green");
+            } else if (hue < 225) {
+                telemetry.addData("Color", "Blue");
+            } else if (hue < 350) {
+                telemetry.addData("Color", "Purple");
+            } else {
+                telemetry.addData("Color", "Red");
+            }
             // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
             double flywheelPower;
             double intakePower;
             double rollerPower;
-
+            if (hue == Double.parseDouble("yellow")) {
+                //set
+            }
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
 
             // POV Mode uses left stick to go forward, and right stick to turn.
             // - This uses basic math to combine motions and is easier to drive straight.
             double drive = -gamepad1.left_stick_y;
-            double turn  =  gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-            rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+            double turn = gamepad1.right_stick_x;
+            leftPower = Range.clip(drive + turn, -1.0, 1.0);
+            rightPower = Range.clip(drive - turn, -1.0, 1.0);
             flywheelPower = gamepad1.right_trigger;
             intakePower = 5.0;
             rollerPower = 5.0;
 
             //Intake
-            if (gamepad1.rightBumperWasPressed()){
+            if (gamepad1.rightBumperWasPressed()) {
                 intake.setPower(intakePower);
             }
             if (gamepad1.rightBumperWasReleased()) {
@@ -115,7 +145,7 @@ public class Roboteleop15 extends LinearOpMode {
             }
 
             //Rollers
-            if (gamepad1.leftBumperWasPressed()){
+            if (gamepad1.leftBumperWasPressed()) {
                 intake.setPower(rollerPower);
             }
             if (gamepad1.leftBumperWasReleased()) {
