@@ -120,9 +120,7 @@ public class Roboteleop15 extends LinearOpMode {
             double flywheelPower;
             double intakePower;
             double rollerPower;
-            if (hue == Double.parseDouble("yellow")) {
-                //set
-            }
+
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
 
@@ -152,6 +150,18 @@ public class Roboteleop15 extends LinearOpMode {
                 intake.setPower(0);
             }
 
+            //Clicker
+            if (hue == Double.parseDouble("yellow")) {
+
+            }
+                }else if {
+                    (hue == Double.parseDouble("yellow")) {
+
+            }
+                    }else if {
+                        }(hue == Double.parseDouble("yellow")) {
+
+            }
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             // leftPower  = -gamepad1.left_stick_y ;
