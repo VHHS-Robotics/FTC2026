@@ -11,9 +11,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.pedropathing.follower.Follower;
+/*import com.pedropathing.follower.Follower;
 import com.pedropathing.paths.Path;
-
+*/
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
 
@@ -63,7 +63,7 @@ public class Turret extends LinearOpMode {
     private ColorSensor goblinwithred_sensor;
     double hue;
     // Hardware Declare
-    private Follower follower;
+    //private Follower follower;
     private Limelight3A limelight;
     private DcMotor turretMotor;
     private DigitalChannel lightSensor;
