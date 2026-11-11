@@ -4,7 +4,6 @@ package org.firstinspires.ftc.teamcode.pedro;
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted (subject to the limitations in the disclaimer below) provided that
  * the following conditions are met:
- *
  * Redistributions of source code must retain the above copyright notice, this list
  * of conditions and the following disclaimer.
  *
@@ -99,20 +98,29 @@ public class Roboteleop15 extends LinearOpMode {
             test_color = hardwareMap.get(NormalizedColorSensor.class, "test_color");
             colors = test_color.getNormalizedColors();
 
+            String color = "value";
+
             if (hue < 30) {
+                color = "Red";
                 telemetry.addData("Color", "Red");
             } else if (hue < 60) {
                 telemetry.addData("Color", "Orange");
+                color = "Orange";
             } else if (hue < 90) {
                 telemetry.addData("Color", "Yellow");
+                color = "Yellow";
             } else if (hue < 150) {
                 telemetry.addData("Color", "Green");
+                color = "Green";
             } else if (hue < 225) {
                 telemetry.addData("Color", "Blue");
+                color = "Blue";
             } else if (hue < 350) {
                 telemetry.addData("Color", "Purple");
+                color = "Purple";
             } else {
                 telemetry.addData("Color", "Red");
+                color = "Red";
             }
             // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
@@ -120,8 +128,8 @@ public class Roboteleop15 extends LinearOpMode {
             double flywheelPower;
             double intakePower;
             double rollerPower;
-            if (hue == Double.parseDouble("yellow")) {
-                //set
+            if (color == "red"); {
+                //Set clicker power to 1 for untell not seeing red/blue.
             }
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
