@@ -37,7 +37,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
@@ -57,7 +56,21 @@ import org.firstinspires.ftc.robotcore.external.JavaUtil;
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
+import com.qualcomm.hardware.limelightvision.LLResult;
+import com.qualcomm.hardware.limelightvision.LLResultTypes;
+import com.qualcomm.hardware.limelightvision.Limelight3A;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
+import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcore.external.JavaUtil;
+import org.firstinspires.ftc.teamcode.Turret;
 @TeleOp(name="Basic: Linear OpMode", group="TeleOp")
 @Disabled
 public class Roboteleop15 extends LinearOpMode {
@@ -65,12 +78,10 @@ public class Roboteleop15 extends LinearOpMode {
     // Declare OpMode members.
     private final ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive;
+    private DcMotor turretMotor;
     private DcMotor rightDrive;
     private DcMotor flywheel;
     private DcMotor intake;
-    private DcMotor turretMotor; //Motor that turns the turret
-    private Servo clicker;
-
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -83,7 +94,9 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
         intake = hardwareMap.get(DcMotor.class, "in");
-        clicker = hardwareMap.get(Servo.class, "clicker"); //the motor for the "gate"
+        turretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
+        turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -91,7 +104,6 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         intake.setDirection(DcMotor.Direction.FORWARD);
-        clicker.setDirection(Servo.Direction.FORWARD);
         // Wait for the game to start (driver presses START)
         waitForStart();
         runtime.reset();
@@ -105,40 +117,30 @@ public class Roboteleop15 extends LinearOpMode {
             test_color = hardwareMap.get(NormalizedColorSensor.class, "test_color");
             colors = test_color.getNormalizedColors();
 
-            String color = "value";
-
             if (hue < 30) {
-                color = "Red";
                 telemetry.addData("Color", "Red");
             } else if (hue < 60) {
                 telemetry.addData("Color", "Orange");
-                color = "Orange";
             } else if (hue < 90) {
                 telemetry.addData("Color", "Yellow");
-                color = "Yellow";
             } else if (hue < 150) {
                 telemetry.addData("Color", "Green");
-                color = "Green";
             } else if (hue < 225) {
                 telemetry.addData("Color", "Blue");
-                color = "Blue";
             } else if (hue < 350) {
                 telemetry.addData("Color", "Purple");
-                color = "Purple";
             } else {
                 telemetry.addData("Color", "Red");
-                color = "Red";
             }
             // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
+            //Turret Fire Motor thing
             double flywheelPower;
             double intakePower;
             double rollerPower;
-            if (color.equals( "Red") || color.equals( "Blue")) {
-                //Set clicker power to 1 for untell not seeing red/blue.
-            } else if (color.equals("Yellow")){
-                //Set clicker power to 0 if
+            if (hue == Double.parseDouble("yellow")) {
+                //set
             }
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -150,8 +152,8 @@ public class Roboteleop15 extends LinearOpMode {
             leftPower = Range.clip(drive + turn, -1.0, 1.0);
             rightPower = Range.clip(drive - turn, -1.0, 1.0);
             flywheelPower = gamepad1.right_trigger;
-            intakePower = 5.0;
-            rollerPower = 5.0;
+            intakePower = .50;
+            rollerPower = .50;
 
             //Intake
             if (gamepad1.rightBumperWasPressed()) {
@@ -168,7 +170,14 @@ public class Roboteleop15 extends LinearOpMode {
             if (gamepad1.leftBumperWasReleased()) {
                 intake.setPower(0);
             }
-
+            //Turret rotation
+            if (gamepad1.dpad_left){ //if left then go left ⬅️
+                turretMotor.setPower(1);
+            }else if (gamepad1.dpad_right){ //else if right go right ➡️
+                turretMotor.setPower(-1);
+            }else { //else, not left or right, do nothing and set 0 😃
+                turretMotor.setPower(0);
+            }
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             // leftPower  = -gamepad1.left_stick_y ;

@@ -20,7 +20,7 @@ import org.firstinspires.ftc.robotcore.external.JavaUtil;
 @Autonomous(name = "BioBuzz_30Sec_Auton", group = "Autonomous")
 public class Turret extends LinearOpMode {
     //the garyibles (😂)
-    private DcMotor TurretMotor;
+    private DcMotor flywheel;
     private final double GRAVITY = 9.80; //the gravity of EARTH specifically
     private double hiveheight = 0.0;
     double turretAngleRad = 0.0;
@@ -29,8 +29,8 @@ public class Turret extends LinearOpMode {
     double massOfPollen = 0.0;
     //el constructoro 😔
     public void initalize(HardwareMap hardwareMap){
-        turretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
-        turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+        flywheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Initialize default values
         this.horizontaldistancetohive = 0.0; //will vari...able this should also be in meters btw 😂
@@ -53,19 +53,19 @@ public class Turret extends LinearOpMode {
         return Math.sqrt(numerator/denominator);
         //temp comment to updat
     }
-    public void setTurretMotor(){
+    public void setflywheel(){
         double requiredVelocity = GetTheSpeedWeNeed();
         //THIS IS PLACEHOLDER OR SOMETHING
         final double MAX_VELOCITY = 15.0; // Max velocity the turret can output in m/s, please replace with actual number sometime!!! ‼️⚠️
         double motorPower = requiredVelocity / MAX_VELOCITY;
-        TurretMotor.setPower(motorPower);
+        flywheel.setPower(motorPower);
     }
     private ColorSensor goblinwithred_sensor;
     double hue;
     // Hardware Declare
     //private Follower follower;
     private Limelight3A limelight;
-    private DcMotor turretMotor;
+//    private DcMotor flywheel;
     private DigitalChannel lightSensor;
 
     // Configuration / Constants
@@ -132,8 +132,8 @@ public class Turret extends LinearOpMode {
 //        limelight.pipelineSwitch(PIPELINE_APRILTAG); // Starts on AprilTags
 //
 //        // 3. Initialize Turret and Light Sensor
-//        turretMotor = hardwareMap.get(DcMotor.class, "turretMotor");
-//        turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+//        flywheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //
 //        lightSensor = hardwareMap.get(DigitalChannel.class, "lightSensor");
 //        lightSensor.setMode(DigitalChannel.Mode.INPUT);
@@ -243,7 +243,7 @@ public class Turret extends LinearOpMode {
 //        }
 //
 //        // Emergency cutoff after 30 seconds
-//        turretMotor.setPower(0);
+//        flywheel.setPower(0);
     }
 
     private NormalizedRGBA getNormalizedColors() {
