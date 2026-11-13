@@ -129,6 +129,7 @@ public class Roboteleop15 extends LinearOpMode {
                 telemetry.addData("Color", "Red");
                 color = "Red";
             }
+
             // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
