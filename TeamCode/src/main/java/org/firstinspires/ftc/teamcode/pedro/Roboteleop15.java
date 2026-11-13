@@ -128,8 +128,10 @@ public class Roboteleop15 extends LinearOpMode {
             double flywheelPower;
             double intakePower;
             double rollerPower;
-            if (color == "red"); {
+            if (color.equals( "Red") || color.equals( "Blue")) {
                 //Set clicker power to 1 for untell not seeing red/blue.
+            } else if (color.equals("Yellow")){
+                //Set clicker power to 0 if
             }
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
