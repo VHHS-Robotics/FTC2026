@@ -83,7 +83,7 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
         intake = hardwareMap.get(DcMotor.class, "in");
-        clicker = hardwareMap.get(Servo.class, "clicker");
+        clicker = hardwareMap.get(Servo.class, "clicker"); //the motor for the "gate"
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
