@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -58,8 +59,11 @@ public class Roboteleop15 extends LinearOpMode {
     private final ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive;
     private DcMotor rightDrive;
-    private DcMotor flywheel;
+    private DcMotor flywheel; //Motor that shoots
     private DcMotor intake;
+    private DcMotor turretMotor; //Motor that turns the turret
+    private Servo clicker;
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -72,6 +76,7 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
         intake = hardwareMap.get(DcMotor.class, "in");
+        clicker = hardwareMap.get(Servo.class, "clicker");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -79,6 +84,7 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         intake.setDirection(DcMotor.Direction.FORWARD);
+        clicker.setDirection(Servo.Direction.FORWARD);
         // Wait for the game to start (driver presses START)
         waitForStart();
         runtime.reset();
@@ -92,6 +98,7 @@ public class Roboteleop15 extends LinearOpMode {
             double flywheelPower;
             double intakePower;
             double rollerPower;
+
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
