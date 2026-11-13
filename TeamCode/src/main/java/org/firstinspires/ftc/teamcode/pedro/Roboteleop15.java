@@ -129,7 +129,6 @@ public class Roboteleop15 extends LinearOpMode {
                 telemetry.addData("Color", "Red");
                 color = "Red";
             }
-
             // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
@@ -138,10 +137,8 @@ public class Roboteleop15 extends LinearOpMode {
             double rollerPower;
             if (color.equals( "Red") || color.equals( "Blue")) {
                 //Set clicker power to 1 for untell not seeing red/blue.
-                clicker.setPosition(90);
             } else if (color.equals("Yellow")){
-                //Set clicker power to 0 if seeing YELLOW!.
-                clicker.setPosition(0);
+                //Set clicker power to 0 if
             }
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
