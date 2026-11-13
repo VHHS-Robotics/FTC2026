@@ -33,7 +33,7 @@ public class Turret extends LinearOpMode {
         turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Initialize default values
-        this.horizontaldistancetohive = 0.0; //will vari...able 😂
+        this.horizontaldistancetohive = 0.0; //will vari...able this should also be in meters btw 😂
         this.hiveheight = 1.35; //the height of the hive, in meters 😂
         this.turretAngleRad = Math.toRadians(67.0);
         //the angle of the turret VERTICALLY 😭, in degrees (also remove the emojis if they cause problems)
