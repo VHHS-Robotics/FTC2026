@@ -14,7 +14,6 @@ import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
 import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 // Starts the thing.
@@ -33,7 +32,7 @@ public class P3_G extends LinearOpMode {
     private final Pose point5 = poseFactory.of(33.9738, 105.8308, -90);
     private final Pose point6Start = poseFactory.of(33.9738, 105.8308, 90);
     private final Pose point6 = poseFactory.of(34.3106, 13.3684, 180);
-    private final Pose point7 = poseFactory.of(8.2843, 8.5834, 180);
+    private final Pose point7 = poseFactory.of(11.1, 8.5834, 180);
     private final Pose point8 = poseFactory.of(55.2202, 26.5388, 90);
     private final Pose point9 = poseFactory.of(34.8887, 48.2495, 90);
     private final Pose point10Start = poseFactory.of(34.8887, 48.2495, 180);
@@ -88,51 +87,45 @@ public class P3_G extends LinearOpMode {
     }
     // Activates the paths.
     public Path path1() {
-        return Paths.line(start, path1).linear(start, path1);
+        return Paths.line(start, path1).linear(start, path1).tangent();
     }
 
-    public Path path2() {
-        return Paths.line(path1, point2).linear(path1, point2);
-    }
+    public Path path2() {return Paths.line(path1, point2).linear(path1, point2).tangent();}
 
     public Path path3() {
-        return Paths.line(point2, point3).linear(point2, point3);
+        return Paths.line(point2, point3).linear(point2, point3).tangent();
     }
 
     public Path path4() {
-        return Paths.line(point3, point4).linear(point3, point4);
+        return Paths.line(point3, point4).linear(point3, point4).tangent();
     }
 
     public Path path5() {
-        return Paths.line(point4, point5).linear(point4, point5);
+        return Paths.line(point4, point5).linear(point4, point5).tangent();
     }
 
     public Path path6() {
-        return Paths.line(point6Start, point6).linear(point6Start, point6);
+        return Paths.line(point6Start, point6).linear(point6Start, point6).tangent();
     }
 
-    public Path path7() {
-        return Paths.line(point6, point7).linear(point6, point7);
-    }
+    public Path path7() {return Paths.line(point6, point7).linear(point6, point7).tangent();}
 
     public Path path8() {
-        return Paths.line(point7, point8).linear(point7, point8);
+        return Paths.line(point7, point8).linear(point7, point8).tangent();
     }
 
     public Path path9() {
-        return Paths.line(point8, point9).linear(point8, point9);
+        return Paths.line(point8, point9).linear(point8, point9).tangent();
     }
 
-    public Path path10() {
-        return Paths.line(point10Start, point10).linear(point10Start, point10);
-    }
+    public Path path10() {return Paths.line(point10Start, point10).linear(point10Start, point10).tangent();}
 
     public Path path11() {
-        return Paths.line(point10, point11).linear(point10, point11);
+        return Paths.line(point10, point11).linear(point10, point11).tangent();
     }
 
     public Path path12() {
-        return Paths.line(point11, point12).linear(point11, point12);
+        return Paths.line(point11, point12).linear(point11, point12).tangent();
     }
 }
 //tHE eND.

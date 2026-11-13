@@ -5,23 +5,65 @@ import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
+
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.pedropathing.follower.Follower;
+/*import com.pedropathing.follower.Follower;
 import com.pedropathing.paths.Path;
-
+*/
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
 
 @Autonomous(name = "BioBuzz_30Sec_Auton", group = "Autonomous")
 public class Turret extends LinearOpMode {
+    //the garyibles (😂)
+    private DcMotor TurretMotor;
+    private final double GRAVITY = 9.80; //the gravity of EARTH specifically
+    private double hiveheight = 0.0;
+    double turretAngleRad = 0.0;
+    double horizontaldistancetohive = 0.0; //idk what else to call this
+    double massOfNectar = 0.0;
+    double massOfPollen = 0.0;
+    //el constructoro 😔
+    public void initalize(HardwareMap hardwareMap){
+        turretMotor = hardwareMap.get(DcMotor.class, "turret_motor");
+        turretMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        // Initialize default values
+        this.horizontaldistancetohive = 0.0; //will vari...able 😂
+        this.hiveheight = 1.35; //the height of the hive, in meters 😂
+        this.turretAngleRad = Math.toRadians(67.0);
+        //the angle of the turret VERTICALLY 😭, in degrees (also remove the emojis if they cause problems)
+        //PLACEHOLDER!!!!!!, replace with the angle of the turret vertically!! PLEASE!!! 🙏
+        this.massOfPollen = 0.0; //i dont know the masses of either of these 😭🙏🙏
+        this.massOfNectar = 0.0; //or if we even need it
+    }
+    /*
+    Basically calculate the initial velocity required to throw a ball with the turret motor
+    and have it go into the hive
+    */
+    public double GetTheSpeedWeNeed() {
+        double numerator = this.GRAVITY * Math.pow(horizontaldistancetohive,2); //calcs the numerator
+        double cdelta = (2 * Math.cos(turretAngleRad));
+        double tdelta = Math.tan(turretAngleRad);
+        double denominator = cdelta * (horizontaldistancetohive * tdelta * this.hiveheight); //calcs denom
+        return Math.sqrt(numerator/denominator);
+        //temp comment to updat
+    }
+    public void setTurretMotor(){
+        double requiredVelocity = GetTheSpeedWeNeed();
+        //THIS IS PLACEHOLDER OR SOMETHING
+        final double MAX_VELOCITY = 15.0; // Max velocity the turret can output in m/s, please replace with actual number sometime!!! ‼️⚠️
+        double motorPower = requiredVelocity / MAX_VELOCITY;
+        TurretMotor.setPower(motorPower);
+    }
     private ColorSensor goblinwithred_sensor;
     double hue;
     // Hardware Declare
-    private Follower follower;
+    //private Follower follower;
     private Limelight3A limelight;
     private DcMotor turretMotor;
     private DigitalChannel lightSensor;
@@ -220,19 +262,5 @@ public class Turret extends LinearOpMode {
         return (tagHeightInches - cameraHeightInches) / Math.tan(totalAngleRadians);
 
     }
-    public double GetTheSpeedWeNeed(double x) {
-        double GRAVITY = 9.80;
-        double hiveheight = 1.35; //the height of the hive, in meters 😂
-        double delta; //the angle of the turret VERTICALLY, in degrees 😭
-        delta = Math.toRadians(67.00);
-        double numerator = GRAVITY * x;
-        double cdelta = (2 * Math.cos(delta));
-        double tdelta = Math.tan(delta);
-        double denominator = cdelta * (x * tdelta * hiveheight);
-        return (numerator/denominator);
-    }
 
-    public void setTurretMotor(){
-
-    }
 }
