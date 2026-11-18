@@ -1,3 +1,4 @@
+
 package org.firstinspires.ftc.teamcode.pedro;
 /* Copyright (c) 2017 FIRST. All rights reserved.
  *
@@ -68,6 +69,7 @@ public class Roboteleop15 extends LinearOpMode {
     private DcMotor rightDrive;
     private DcMotor flywheel;
     private DcMotor intake;
+    private NormalizedRGBA colors;
     private DcMotor turretMotor; //Motor that turns the turret
     private Servo clicker;
 
@@ -84,6 +86,7 @@ public class Roboteleop15 extends LinearOpMode {
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
         intake = hardwareMap.get(DcMotor.class, "in");
         clicker = hardwareMap.get(Servo.class, "clicker"); //the motor for the "gate"
+        colors = hardwareMap.get(NormalizedRGBA.class, "test_color");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -96,13 +99,13 @@ public class Roboteleop15 extends LinearOpMode {
         waitForStart();
         runtime.reset();
         double hue;
-        NormalizedRGBA colors = null;
+
         hue = JavaUtil.colorToHue(colors.toColor());
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             NormalizedColorSensor test_color = null;
             telemetry.addData("Light Detected", ((OpticalDistanceSensor) test_color).getLightDetected());
-            test_color = hardwareMap.get(NormalizedColorSensor.class, "test_color");
+
             colors = test_color.getNormalizedColors();
 
             String color = "value";
