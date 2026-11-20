@@ -28,7 +28,7 @@ public class The_Blue_Code extends LinearOpMode {
     private final Pose start = poseFactory.of(87.9569, 129.9768, 90);
     private final Pose path1 = poseFactory.of(88, 108, -89.8877);
 
-    //??? setPowerTo()
+    //??? setPowerTo(5)
     // Autonomous routine
     public Command autoRoutine() {
         return sequential(
