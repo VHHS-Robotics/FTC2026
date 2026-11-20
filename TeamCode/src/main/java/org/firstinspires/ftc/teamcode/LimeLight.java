@@ -22,8 +22,8 @@ import java.util.List;
  * Driver Station OpMode list, or add a @Disabled annotation to prevent this OpMode from being
  * added to the Driver Station.
  */
-@Autonomous(name = "LimeLightTest")
-public class LimeLightTest extends OpMode {
+@Autonomous(name = "LimeLight")
+public class LimeLight extends OpMode {
     /* Declare OpMode members. */
     private Limelight3A camera;
     private DcMotor front_left;
