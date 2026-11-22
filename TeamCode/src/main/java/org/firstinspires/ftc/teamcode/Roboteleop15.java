@@ -148,6 +148,7 @@ public class Roboteleop15 extends LinearOpMode {
 //            } else if (color.equals("Yellow")){
 //                clicker.setPosition(0);
 //            }
+            //
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
             //GG's man GG's.
