@@ -73,6 +73,8 @@ public class Roboteleop15 extends LinearOpMode {
     private DcMotor turretMotor; //Motor that turns the turret
     private Servo clicker;
 
+    private DcMotor rollers;
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -85,6 +87,7 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
         intake = hardwareMap.get(DcMotor.class, "intake");
+        rollers  = hardwareMap.get(DcMotor.class,"Rollers");
 
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
