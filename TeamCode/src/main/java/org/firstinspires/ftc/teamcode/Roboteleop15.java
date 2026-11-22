@@ -60,7 +60,7 @@ import org.firstinspires.ftc.robotcore.external.JavaUtil;
  */
 
 @TeleOp(name="Basic: Linear OpMode", group="TeleOp")
-@Disabled
+
 public class Roboteleop15 extends LinearOpMode {
 
     // Declare OpMode members.
