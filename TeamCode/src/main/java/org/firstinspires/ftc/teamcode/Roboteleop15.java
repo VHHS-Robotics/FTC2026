@@ -69,9 +69,9 @@ public class Roboteleop15 extends LinearOpMode {
     private DcMotor rightDrive;
     private DcMotor flywheel;
     private DcMotor intake;
-    private NormalizedRGBA colors;
-    private DcMotor turretMotor; //Motor that turns the turret
-    private Servo clicker;
+//    private NormalizedRGBA colors;
+//    private DcMotor turretMotor; //Motor that turns the turret
+//    private Servo clicker;
 
     private DcMotor rollers;
 
@@ -97,56 +97,56 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         intake.setDirection(DcMotor.Direction.FORWARD);
-         clicker.setDirection(Servo.Direction.FORWARD);
+//         clicker.setDirection(Servo.Direction.FORWARD);
         // Wait for the game to start (driver presses START)
         waitForStart();
         runtime.reset();
-        double hue;
+//        double hue;
 
-        hue = JavaUtil.colorToHue(colors.toColor());
+//        hue = JavaUtil.colorToHue(colors.toColor());
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            NormalizedColorSensor test_color = null;
-            telemetry.addData("Light Detected", ((OpticalDistanceSensor) test_color).getLightDetected());
+//            NormalizedColorSensor test_color = null;
+//            telemetry.addData("Light Detected", ((OpticalDistanceSensor) test_color).getLightDetected());
 
-            colors = test_color.getNormalizedColors();
+//            colors = test_color.getNormalizedColors();
 
-            String color = "value";
+//            String color = "value";
 
-            if (hue < 30) {
-                color = "Red";
-                telemetry.addData("Color", "Red");
-            } else if (hue < 60) {
-                telemetry.addData("Color", "Orange");
-                color = "Orange";
-            } else if (hue < 90) {
-                telemetry.addData("Color", "Yellow");
-                color = "Yellow";
-            } else if (hue < 150) {
-                telemetry.addData("Color", "Green");
-                color = "Green";
-            } else if (hue < 225) {
-                telemetry.addData("Color", "Blue");
-                color = "Blue";
-            } else if (hue < 350) {
-                telemetry.addData("Color", "Purple");
-                color = "Purple";
-            } else {
-                telemetry.addData("Color", "Red");
-                color = "Red";
-            }
+//            if (hue < 30) {
+//                color = "Red";
+//                telemetry.addData("Color", "Red");
+//            } else if (hue < 60) {
+//                telemetry.addData("Color", "Orange");
+//                color = "Orange";
+//            } else if (hue < 90) {
+//                telemetry.addData("Color", "Yellow");
+//                color = "Yellow";
+//            } else if (hue < 150) {
+//                telemetry.addData("Color", "Green");
+//                color = "Green";
+//            } else if (hue < 225) {
+//                telemetry.addData("Color", "Blue");
+//                color = "Blue";
+//            } else if (hue < 350) {
+//                telemetry.addData("Color", "Purple");
+//                color = "Purple";
+//            } else {
+//                telemetry.addData("Color", "Red");
+//                color = "Red";
+//            }
             // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
             double flywheelPower;
             double intakePower;
             double rollerPower;
-            if (color.equals( "Red") || color.equals( "Blue")) {
-                //Set clicker power to 1 for untell not seeing red/blue.
-                clicker.setPosition(0.25);
-            } else if (color.equals("Yellow")){
-                clicker.setPosition(0);
-            }
+//            if (color.equals( "Red") || color.equals( "Blue")) {
+//                //Set clicker power to 1 for untell not seeing red/blue.
+//                clicker.setPosition(0.25);
+//            } else if (color.equals("Yellow")){
+//                clicker.setPosition(0);
+//            }
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
             //GG's man GG's.
