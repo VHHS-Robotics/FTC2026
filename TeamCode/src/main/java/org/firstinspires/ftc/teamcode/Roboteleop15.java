@@ -87,7 +87,7 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         flywheel = hardwareMap.get(DcMotor.class, "launcher");
         intake = hardwareMap.get(DcMotor.class, "intake");
-        rollers  = hardwareMap.get(DcMotor.class,"Rollers");
+        rollers  = hardwareMap.get(DcMotor.class,"rollers");
 
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
