@@ -163,18 +163,21 @@ public class Roboteleop15 extends LinearOpMode {
             //Intake
             if (gamepad1.rightBumperWasPressed()) {
                 intake.setPower(intakePower);
+                rollers.setPower(intakePower);
             }
             if (gamepad1.rightBumperWasReleased()) {
                 intake.setPower(0);
+                rollers.setPower(0);
             }
 
-            //Rollers
-            if (gamepad1.leftBumperWasPressed()) {
-                intake.setPower(rollerPower);
-            }
-            if (gamepad1.leftBumperWasReleased()) {
-                intake.setPower(0);
-            }
+//            //Rollers
+//            if (gamepad1.leftBumperWasPressed()) {
+//                intake.setPower(rollerPower);
+//            }
+//            if (gamepad1.leftBumperWasReleased()) {
+//                intake.setPower(0);
+//            }
+//
 
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
