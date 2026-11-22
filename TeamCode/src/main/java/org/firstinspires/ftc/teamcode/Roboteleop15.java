@@ -97,6 +97,7 @@ public class Roboteleop15 extends LinearOpMode {
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         intake.setDirection(DcMotor.Direction.FORWARD);
+        rollers.setDirection(DcMotor.Direction.FORWARD);
 //         clicker.setDirection(Servo.Direction.FORWARD);
         // Wait for the game to start (driver presses START)
         waitForStart();
